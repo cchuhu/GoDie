@@ -12,40 +12,45 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <huhu.com.godie.GifView
+    <TextView
+        android:id="@+id/mTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/throwme"
         android:layout_centerInParent="true"
-        attr:auto_play="true"
-        />
+        android:text="0.0米"
+        android:textSize="30dp"
+        android:textColor="#000000"
 
-    <huhu.com.godie.GifView
-        android:layout_alignParentBottom="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/throwme"
-        attr:auto_play="true"
         />
 
     <huhu.com.godie.GifView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/throwme"
-        attr:auto_play="true"
-        />
-    <huhu.com.godie.GifView
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/throwme"
-        attr:auto_play="true"
-        />
-    <huhu.com.godie.GifView
-        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:background="@mipmap/throwme"
+        attr:auto_play="true"
+        />
+
+    <huhu.com.godie.GifView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@mipmap/throwme"
+        attr:auto_play="true"
+        />
+
+    <huhu.com.godie.GifView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/throwme"
+        attr:auto_play="true"
+        />
+
+    <huhu.com.godie.GifView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:background="@mipmap/throwme"
         attr:auto_play="true"
         />

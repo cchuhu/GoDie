@@ -8,6 +8,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 public class MainActivity extends Activity implements SensorEventListener {
     //传感器管理器
@@ -16,12 +19,15 @@ public class MainActivity extends Activity implements SensorEventListener {
     private Sensor accSensor;
     //时间记录类
     private TimeLog timelog = new TimeLog();
+    //最终高度
     private static double height;
+    private TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mTextView = (TextView) findViewById(R.id.mTextView);
         initWidget();
     }
 
@@ -62,13 +68,12 @@ public class MainActivity extends Activity implements SensorEventListener {
         /*假设手机屏幕向上，静态下数值为10.几
         * 加速度开始大于10，是因为手机被上抛，处于超重状态
         * 在最高点的时候，处于完全失重状态，加速度显示为0，由此可用来判断抛起的开始与结束时间点*/
+        Log.e("z轴加速度值", ""+z);
         if (timelog.getStartTime() == 0 && z > 11) {
             timelog.setStartTime(System.currentTimeMillis());
-            Log.e("startTime", "" + timelog.getStartTime());
         }
         if (timelog.getStopTime() == 0 && z < 1) {
             timelog.setStopTime(System.currentTimeMillis());
-            Log.e("stopTime", "" + timelog.getStopTime());
             //抛完一次，注销掉感应器
             sensorManager.unregisterListener(this, accSensor);
             //计算时间差：毫秒
@@ -77,6 +82,11 @@ public class MainActivity extends Activity implements SensorEventListener {
             double times = time / 1000.0;
             //应用物理学公式h=1/2 *g*t*t计算高度
             height = (times) * (times) * 4.9;
+            DecimalFormat df = new DecimalFormat("0.00");
+            String str_height = String.valueOf(df.format(height));
+            //设置高度
+            mTextView.setText(str_height + "米");
+
         }
 
     }
